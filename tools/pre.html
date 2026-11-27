@@ -1,0 +1,28 @@
+<script>
+%FFLATE%
+</script>
+<script>
+// ---- Avisos visibles: si algo impide arrancar, se muestra en pantalla en vez de quedar en blanco ----
+(function () {
+  function show(msg) {
+    let d = document.getElementById('caa-aviso');
+    if (!d) {
+      d = document.createElement('div'); d.id = 'caa-aviso';
+      d.style.cssText = 'position:fixed;inset:auto 16px 16px 16px;z-index:99999;background:#1d1520;color:#fff;border:2px solid #f0a870;border-radius:12px;padding:16px 20px;font:15px/1.45 system-ui,sans-serif;white-space:pre-wrap;box-shadow:0 8px 30px #0008';
+      (document.body || document.documentElement).appendChild(d);
+    }
+    d.textContent = msg;
+  }
+  window.caaAviso = show;
+  window.addEventListener('DOMContentLoaded', function () {
+    const gl = document.createElement('canvas').getContext('webgl2');
+    if (!gl) show('Tu navegador no tiene WebGL 2 activado, y el juego lo necesita.\n\n• Ábrelo con Google Chrome, Microsoft Edge o Firefox actualizados.\n• En Chrome/Edge: Configuración → Sistema → activa «Usar aceleración por hardware» y reinicia el navegador.\n• Si lo estás viendo dentro de una vista previa, descarga el archivo y ábrelo con doble clic.');
+  });
+  window.addEventListener('error', function (e) { show('No se pudo iniciar el juego:\n' + (e.message || e) + '\n\nPrueba con Chrome o Edge actualizados. Se necesitan unos 2 GB de memoria libre.'); });
+  window.addEventListener('unhandledrejection', function (e) {
+    const m = String((e.reason && (e.reason.message || e.reason)) || '');
+    if (/serviceworker/i.test(m)) return;
+    show('No se pudo iniciar el juego:\n' + m + '\n\nPrueba con Chrome o Edge actualizados. Se necesitan unos 2 GB de memoria libre.');
+  });
+})();
+</script>
