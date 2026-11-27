@@ -1,0 +1,7 @@
+.godot/
+Builds/
+*.tmp
+export_credentials.cfg
+build/
+.import/
+*.translation
