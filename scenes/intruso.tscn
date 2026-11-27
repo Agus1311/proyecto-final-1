@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy_intruder.gd" id="1"]
+
+[node name="Intruso" type="Node3D"]
+script = ExtResource("1")
+radio_deteccion = 7.0
+angulo_vision = 110.0
+tiempo_perder_vista = 3.0
+distancia_atrapar = 0.9
+velocidad_patrulla = 1.3
+velocidad_persecucion = 3.1
+dano = 12
+minutos_fuera = 90
+hora_aparicion = 600
